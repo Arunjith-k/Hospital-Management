@@ -1,9 +1,54 @@
-import 'react'
+import "react";
+import { useState } from "react";
 
 const Login = () => {
-  return (
-    <div>Login</div>
-  )
-}
+  const [state, setState] = useState("Sign Up");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
 
-export default Login
+  const onSubmitHandler = async (event) => {
+    event.preventDefault();
+  };
+
+  return (
+    <form className="min-h-[80vh] flex items-center">
+      <div>
+        <p>{state === "Sign Up" ? "Create Account" : "Login"}</p>
+        <p>
+          Please {state === "Sign Up" ? "sign up" : "log in"} to book
+          appointment
+        </p>
+        <div>
+          <p>Full Name</p>
+          <input
+            type="text"
+            onChange={(e) => setName(e.target.name)}
+            value={name}
+            required
+          />
+        </div>
+        <div>
+          <p>Email</p>
+          <input
+            type="email"
+            onChange={(e) => setName(e.target.name)}
+            value={name}
+            required
+          />
+        </div>
+        <div>
+          <p>Password</p>
+          <input
+            type="password"
+            onChange={(e) => setName(e.target.name)}
+            value={name}
+            required
+          />
+        </div>
+      </div>
+    </form>
+  );
+};
+
+export default Login;
