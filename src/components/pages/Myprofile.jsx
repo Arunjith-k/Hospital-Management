@@ -6,6 +6,7 @@ const Myprofile = () => {
     name: "Edward Vincent",
     image: assets.profile_pic,
     email: "richardjames@gmail.com",
+    phone: "555-980-232",
     address: {
       line1: "123 Main St",
       line2: "Anytown, USA",
