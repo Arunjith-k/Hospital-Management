@@ -3,7 +3,7 @@ import "./index.css";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom"; // Correct import!
 import App from "./App"; // Assuming you have an App component
-import AppContextProvider from "./context/Appcontext";
+import AppContextProvider from "./context/AppContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

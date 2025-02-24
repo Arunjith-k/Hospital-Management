@@ -6,7 +6,7 @@ import About from "./components/pages/About";
 import Login from "./components/pages/Login";
 import Contact from "./components/pages/Contact";
 import Myprofile from "./components/pages/Myprofile";
-import Myappointment from "./components/pages/Myappointment";
+import Myappointment from "./components/pages/Myappointment"; // Ensure this file exists
 import Appointment from "./components/pages/Appointment";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -23,7 +23,7 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/my-profile" element={<Myprofile />} />
-        <Route path="/my-appointment" element={<Myappointment />} />
+        <Route path="/my-appointments" element={<Myappointment />} />
         <Route path="/appointment/:docId" element={<Appointment />} />
       </Routes>
       <Footer />

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { AppContext } from "../../context/Appcontext";
+import { AppContext } from "../../context/AppContext";
 import { assets } from "../../assets/assets";
 import RelatedDoctors from "../RelatedDoctors";
 
