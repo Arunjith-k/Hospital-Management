@@ -1,46 +1,65 @@
-import "react";
-import { assets } from "../assets/assets";
+import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="md:mx-10">
-      <div className="flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 my-10 mt-40 text-sm">
-        {/*----------- left section---*/}
+    <footer className="py-8 mt-12 border-t border-gray-300">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
-          <img className="mb-5 w-40" src={assets.logo} alt="" />
-          <p className="w-full md:w-2/3 text-gray-600 leading-6">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the standard dummy text ever since
-            the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book.
+          <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
+          <ul className="space-y-2">
+            <li>
+              <NavLink to="/" className="hover:text-primary">
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/doctors" className="hover:text-primary">
+                All Doctors
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/about" className="hover:text-primary">
+                About Us
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/contact" className="hover:text-primary">
+                Contact
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="font-semibold text-lg mb-4">Contact Information</h3>
+          <p className="mb-2">Email: support@doctorbooking.com</p>
+          <p className="mb-2">Phone: +1 123-456-7890</p>
+          <p>Address: 123 Health Street, Medical City</p>
+        </div>
+
+        <div>
+          <h3 className="font-semibold text-lg mb-4">For Admins</h3>
+          <ul className="space-y-2">
+            <li>
+              <NavLink to="/login" className="hover:text-primary">
+                Admin Login
+              </NavLink>
+            </li>
+          </ul>
+          <p className="mt-4 text-sm text-gray-500">
+            Administrative access is restricted to authorized personnel only.
           </p>
-        </div>
-        {/*----------- center section---*/}
-        <div>
-          <p className="text-xl font-medium mb-5">COMPANY</p>
-          <ul className="flex flex-col gap-2 text-gray-600">
-            <li>Home</li>
-            <li>About us</li>
-            <li>Contact us</li>
-            <li>Privacy policy</li>
-          </ul>
-        </div>
-        {/*----------- right section---*/} {/*----------- left section---*/}
-        <div>
-          <p className="text-xl font-medium mb-5">GET IN TOUCH</p>
-          <ul className="flex flex-col gap-2 text-gray-600">
-            <li>+0-000-000-000</li>
-            <li>greatstackdev@gmail.com</li>
-          </ul>
         </div>
       </div>
 
-      {/*------ copy right ---*/}
-      <div>
-        <hr />
-        <p className="py-5 text-sm text-center"> Copyright 2025 @</p>
+      <div className="mt-8 text-center border-t border-gray-200 pt-4">
+        <p>
+          &copy; {new Date().getFullYear()} Doctor Booking System. All rights
+          reserved.
+        </p>
       </div>
-    </div>
+    </footer>
   );
 };
 

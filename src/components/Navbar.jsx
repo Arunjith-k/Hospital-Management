@@ -3,11 +3,10 @@ import { assets } from "../assets/assets";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-const Navbar = () => {
+const Navbar = ({ isAuthenticated, userType, onLogout }) => {
   const navigate = useNavigate();
 
   const [showMenu, setShowMenu] = useState(false);
-  const [token, setToken] = useState(true);
 
   return (
     <div className="flex justify-between text-sm py-4 mb-5 border-b border-gray-400">
@@ -34,9 +33,16 @@ const Navbar = () => {
           <li className="py-1">CONTACT</li>
           <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
         </NavLink>
+        {/* Only show Admin link if user is admin */}
+        {userType === "admin" && (
+          <NavLink to={"/admin"}>
+            <li className="py-1">ADMIN</li>
+            <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
+          </NavLink>
+        )}
       </ul>
       <div className="flex items-center gap-4">
-        {token ? (
+        {isAuthenticated ? (
           <div className="flex items-center gap-2 cursor-pointer group relative">
             <img className="w-8 rounded-full" src={assets.profile_pic} alt="" />
             <img className="w-2.5" src={assets.dropdown_icon} alt="" />
@@ -54,8 +60,19 @@ const Navbar = () => {
                 >
                   My Appointments
                 </p>
+                {userType === "admin" && (
+                  <p
+                    onClick={() => navigate("/admin")}
+                    className="hover:text-black cursor-pointer"
+                  >
+                    Admin Dashboard
+                  </p>
+                )}
                 <p
-                  onClick={() => setToken(false)}
+                  onClick={() => {
+                    onLogout();
+                    navigate("/login");
+                  }}
                   className="hover:text-black cursor-pointer"
                 >
                   Logout
@@ -105,6 +122,11 @@ const Navbar = () => {
             <NavLink onClick={() => setShowMenu(false)} to="/contact">
               <p className="px-4 py-2 rounded inline-block">CONTACT</p>
             </NavLink>
+            {userType === "admin" && (
+              <NavLink onClick={() => setShowMenu(false)} to="/admin">
+                <p className="px-4 py-2 rounded inline-block">ADMIN</p>
+              </NavLink>
+            )}
           </ul>
         </div>
       </div>
