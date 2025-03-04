@@ -1,9 +1,26 @@
-import React, { useState } from "react";
+// src/components/doctor/Appointments/UpcomingAppointments.jsx
+import React, { useState, useEffect } from "react";
 import { Search, Calendar, Filter } from "lucide-react";
+import axios from "axios"; // For API calls
 
-const UpcomingAppointments = ({ appointments }) => {
+const UpcomingAppointments = () => {
+  const [appointments, setAppointments] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [filterStatus, setFilterStatus] = useState("all");
+
+  useEffect(() => {
+    // Fetch appointments from the API
+    const fetchAppointments = async () => {
+      try {
+        const response = await axios.get("/api/doctor/appointments/upcoming");
+        setAppointments(response.data);
+      } catch (error) {
+        console.error("Error fetching appointments:", error);
+      }
+    };
+
+    fetchAppointments();
+  }, []);
 
   const filteredAppointments = appointments.filter((appointment) => {
     const matchesSearch =

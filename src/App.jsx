@@ -1,5 +1,6 @@
+// src/App.jsx
 import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom"; // No Router here
+import { Routes, Route, Navigate } from "react-router-dom"; // Add Navigate here
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./components/pages/Home";
@@ -21,7 +22,6 @@ import PrescriptionForm from "./components/doctor/Prescriptions/PrescriptionForm
 const App = () => {
   return (
     <AuthProvider>
-      {/* No Router here */}
       <div className="mx-4 sm:mx-[10%]">
         <Navbar />
         <Routes>

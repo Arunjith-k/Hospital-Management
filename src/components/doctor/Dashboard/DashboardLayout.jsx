@@ -1,17 +1,46 @@
+// src/components/doctor/Dashboard/DashboardLayout.jsx
 import React from "react";
-import Header from "../Navigation/Header"; // Import Header
-import Sidebar from "../Navigation/Sidebar"; // Import Sidebar
+import Sidebar from "../Navigation/Sidebar";
+import Header from "../Navigation/Header";
 import QuickStats from "./QuickStats";
 import AppointmentCalendar from "./AppointmentCalendar";
 import { AlertTriangle } from "lucide-react";
 
-const DashboardLayout = ({
-  doctor,
-  stats,
-  appointments,
-  pendingRequests,
-  alerts,
-}) => {
+const DashboardLayout = () => {
+  // Dummy data (replace with actual data fetching logic)
+  const appointments = [
+    {
+      id: 1,
+      patientName: "John Doe",
+      reason: "Routine Checkup",
+      time: "10:00 AM",
+      status: "Confirmed",
+    },
+    {
+      id: 2,
+      patientName: "Jane Smith",
+      reason: "Follow-up",
+      time: "11:00 AM",
+      status: "Pending",
+    },
+  ];
+
+  const pendingRequests = [
+    {
+      id: 1,
+      patientName: "Alice Johnson",
+      time: "12:00 PM",
+      reason: "Consultation",
+    },
+  ];
+
+  const alerts = [
+    {
+      id: 1,
+      message: "Urgent: Patient requires immediate attention.",
+    },
+  ];
+
   return (
     <div className="flex min-h-screen">
       {/* Sidebar */}
@@ -24,7 +53,7 @@ const DashboardLayout = ({
 
         {/* Dashboard Content */}
         <main className="flex-1 p-6 bg-gray-100">
-          <QuickStats stats={stats} />
+          <QuickStats stats={{}} />
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2">
@@ -99,9 +128,9 @@ const DashboardLayout = ({
                     <h3 className="font-semibold">Urgent Notifications</h3>
                   </div>
                   <div className="border-t pt-2">
-                    {alerts.map((alert, index) => (
+                    {alerts.map((alert) => (
                       <div
-                        key={index}
+                        key={alert.id}
                         className="flex items-center py-2 border-b text-red-600"
                       >
                         <div className="mr-2 p-1 bg-red-100 rounded">

@@ -1,9 +1,10 @@
+// src/components/pages/Login.js
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext"; // Import AuthContext
+import { AuthContext } from "../../context/AuthContext";
 
 const Login = () => {
-  const { login } = useContext(AuthContext); // Use AuthContext
+  const { login } = useContext(AuthContext);
   const [state, setState] = useState("Sign Up");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,7 +28,15 @@ const Login = () => {
     };
 
     login(userData); // Use the login function from AuthContext
-    navigate("/"); // Redirect to home page
+
+    // Redirect based on user role
+    if (userData.role === "doctor") {
+      navigate("/doctor/dashboard");
+    } else if (userData.role === "admin") {
+      navigate("/admin");
+    } else {
+      navigate("/");
+    }
   };
 
   return (

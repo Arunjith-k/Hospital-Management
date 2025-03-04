@@ -1,7 +1,29 @@
-import React, { useState } from "react";
+// src/components/doctor/Dashboard/AppointmentCalendar.jsx
+import React, { useState, useEffect } from "react";
+import axios from "axios"; // For API calls
 
-const AppointmentCalendar = ({ appointments }) => {
+const AppointmentCalendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
+  const [appointments, setAppointments] = useState([]);
+
+  useEffect(() => {
+    // Fetch appointments for the current month
+    const fetchAppointments = async () => {
+      try {
+        const response = await axios.get("/api/doctor/appointments", {
+          params: {
+            year: currentDate.getFullYear(),
+            month: currentDate.getMonth() + 1,
+          },
+        });
+        setAppointments(response.data);
+      } catch (error) {
+        console.error("Error fetching appointments:", error);
+      }
+    };
+
+    fetchAppointments();
+  }, [currentDate]);
 
   // Generate days for the current month
   const getDaysInMonth = (year, month) => {
