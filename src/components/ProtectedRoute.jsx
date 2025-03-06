@@ -1,9 +1,9 @@
 // src/components/ProtectedRoute.js
 import React, { useContext } from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
-const ProtectedRoute = ({ role }) => {
+const ProtectedRoute = ({ children, role }) => {
   const { user } = useContext(AuthContext);
 
   if (!user) {
@@ -14,7 +14,7 @@ const ProtectedRoute = ({ role }) => {
     return <Navigate to="/" />; // Redirect to home if role doesn't match
   }
 
-  return <Outlet />; // Render child routes if authenticated
+  return children; // Render children if authenticated
 };
 
 export default ProtectedRoute;

@@ -34,6 +34,8 @@ const Login = () => {
       navigate("/doctor/dashboard");
     } else if (userData.role === "admin") {
       navigate("/admin");
+    } else if (userData.role === "patient") {
+      navigate("/"); // Changed from "/home" to "/" to match the home route
     } else {
       navigate("/");
     }

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useContext } from "react";
-import { AppContext } from "../context/Appcontext";
+import { AppContext } from "../context/AppContext";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
