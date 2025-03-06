@@ -1,26 +1,44 @@
 // src/components/doctor/Appointments/UpcomingAppointments.jsx
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Search, Calendar, Filter } from "lucide-react";
-import axios from "axios"; // For API calls
 
 const UpcomingAppointments = () => {
-  const [appointments, setAppointments] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [filterStatus, setFilterStatus] = useState("all");
 
-  useEffect(() => {
-    // Fetch appointments from the API
-    const fetchAppointments = async () => {
-      try {
-        const response = await axios.get("/api/doctor/appointments/upcoming");
-        setAppointments(response.data);
-      } catch (error) {
-        console.error("Error fetching appointments:", error);
-      }
-    };
-
-    fetchAppointments();
-  }, []);
+  // Dummy data for appointments
+  const appointments = [
+    {
+      id: 1,
+      patientName: "John Doe",
+      patientId: "P001",
+      patientImage: "https://via.placeholder.com/32",
+      date: "2024-03-20",
+      time: "10:00 AM",
+      reason: "Routine Checkup",
+      status: "Confirmed",
+    },
+    {
+      id: 2,
+      patientName: "Jane Smith",
+      patientId: "P002",
+      patientImage: "https://via.placeholder.com/32",
+      date: "2024-03-20",
+      time: "11:30 AM",
+      reason: "Follow-up Consultation",
+      status: "Scheduled",
+    },
+    {
+      id: 3,
+      patientName: "Mike Johnson",
+      patientId: "P003",
+      patientImage: "https://via.placeholder.com/32",
+      date: "2024-03-20",
+      time: "2:00 PM",
+      reason: "Initial Consultation",
+      status: "Checked In",
+    },
+  ];
 
   const filteredAppointments = appointments.filter((appointment) => {
     const matchesSearch =
@@ -108,9 +126,7 @@ const UpcomingAppointments = () => {
                   <td className="px-4 py-3">
                     <div className="flex items-center">
                       <img
-                        src={
-                          appointment.patientImage || "/api/placeholder/32/32"
-                        }
+                        src={appointment.patientImage}
                         alt={appointment.patientName}
                         className="w-8 h-8 rounded-full mr-3"
                       />
