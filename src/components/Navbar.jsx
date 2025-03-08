@@ -2,10 +2,11 @@ import "react";
 import { assets } from "../assets/assets";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useAuth } from "../context/AuthContext";
 
-const Navbar = ({ isAuthenticated, userType, onLogout }) => {
+const Navbar = () => {
   const navigate = useNavigate();
-
+  const { isAuthenticated, userType, logout } = useAuth();
   const [showMenu, setShowMenu] = useState(false);
 
   return (
@@ -70,7 +71,7 @@ const Navbar = ({ isAuthenticated, userType, onLogout }) => {
                 )}
                 <p
                   onClick={() => {
-                    onLogout();
+                    logout();
                     navigate("/login");
                   }}
                   className="hover:text-black cursor-pointer"
@@ -85,7 +86,7 @@ const Navbar = ({ isAuthenticated, userType, onLogout }) => {
             onClick={() => navigate("/login")}
             className="bg-primary text-white px-8 py-3 rounded-full font-light hidden md:block"
           >
-            Create Account
+            Login
           </button>
         )}
         <img
